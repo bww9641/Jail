@@ -1,5 +1,8 @@
+#!/usr/bin/python
 import sys
 import signal
+import random
+import subprocess
 
 def send(data):
     sys.stdout.write(data)
@@ -9,11 +12,17 @@ def sendline(data):
     send(data + '\n')
 
 def recv():
-    data = raw_input('')
+    data = raw_input('> ')
     return data
-';'
+
+def getRand(table, length):
+    res = ''
+    for i in xrange(length):
+        res += random.choice(table)
+    return res
+
 def filter(data):
-    filtering = ['#', 'system', 'exec', 'syscall', 'open']
+    filtering = ['#', 'system', 'exec', 'syscall', 'open', 'asm', 'mmap', 'mprotect']
     for i in filtering:
         if i in data:
             return 0
@@ -29,14 +38,27 @@ def execute(cmd):
 
     code = fileheader + cmd + '\n}\n'
 
+    filename = 'C_' + getRand(__import__('string').lowercase, 16)
     
+    f = open('/tmp/' + filename + '.c', 'w')
+    f.write(code)
+    f.close()
+
+    status = subprocess.call(['gcc','-o','/tmp/' + filename, '/tmp/' + filename + '.c'])
+    
+    if status:
+        return 'Compile error'
+
+    res = subprocess.check_output(['/tmp/' + filename])
+
+    return res
 
 if __name__ == '__main__':
     signal.signal(signal.SIGALRM, timeout)
     signal.alarm(240)
 
     sendline("Plz send C code")
-    sendline("If you send \"END\", input will be ended")
+    sendline("If you send \"return 0;\", input will be ended")
     sendline("Then i will execute your code")
 
     sendline('-'*50)
@@ -46,16 +68,17 @@ if __name__ == '__main__':
     code = ''
     while True:
         cmd = recv()
-        if "END" in cmd:
-            break
         code += cmd
+        if "return 0;" in cmd:
+            break
+
     sendline('}')
 
     sendline('-'*50)
 
     if filter(cmd):
         try:
-            execute(cmd)
+            sendline(execute(code))
         except:
             sendline("Error")
     else:
