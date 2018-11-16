@@ -20,7 +20,8 @@ ADD attack /etc/xinetd.d
 
 RUN chmod 460 /home/attack/*
 RUN chown attack:root /home/attack/*
-RUN chmod +x /home/attack/main.py
+RUN mv /home/attack/main.py /home/attack/main 
+RUN chmod +x /home/attack/main
 
 RUN echo "attack 2222/tcp" >> /etc/services
 EXPOSE 2222
