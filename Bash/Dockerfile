@@ -1,10 +1,9 @@
 FROM ubuntu:16.04
 
 MAINTAINER c2w2m2 juchang0308@gmail.com
-
+RUN apt-get clean
 RUN apt-get update
-RUN apt-get install -y xinetd 
-RUN apt-get install -y python2.7
+RUN apt-get install -y xinetd
 
 ENV TERM=linux
 
@@ -19,7 +18,8 @@ ADD attack /etc/xinetd.d
 
 RUN chmod 460 /home/attack/*
 RUN chown attack:root /home/attack/*
-RUN chmod +x /home/attack/main.py
+RUN mv /home/attack/main.py /home/attack/main 
+RUN chmod +x /home/attack/main
 
 RUN echo "attack 2222/tcp" >> /etc/services
 EXPOSE 2222
