@@ -10,32 +10,17 @@ nc c2w2m2.com 6656
 nc c2w2m2.com 6657
 ```
 
-### Go
+### Js
 ```
 nc c2w2m2.com 6658
 ```
 
-### Js
-```
-nc c2w2m2.com 6659
-```
-
-### Perl
-```
-nc c2w2m2.com 6666
-```
-
 ### PHP
 ```
-nc c2w2m2.com 6667
+nc c2w2m2.com 6669
 ```
 
 ### Python
 ```
-nc c2w2m2.com 6668
-```
-
-### Ruby
-```
-nc c2w2m2.com 6669
+nc c2w2m2.com 6670
 ```

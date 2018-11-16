@@ -51,7 +51,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGALRM, timeout)
     signal.alarm(60)
 
-    sendline("Plz send SH code")
+    sendline("Plz send JS code")
     sendline("If you send \"END\", input will be ended")
     sendline("Then i will execute your code")
 

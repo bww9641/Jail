@@ -2,9 +2,11 @@ FROM ubuntu:16.04
 
 MAINTAINER c2w2m2 juchang0308@gmail.com
 
+RUN apt-get clean
 RUN apt-get update
 RUN apt-get install -y xinetd 
 RUN apt-get install -y python2.7
+RUN apt-get install -y php
 
 ENV TERM=linux
 

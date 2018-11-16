@@ -1,7 +1,7 @@
 #!/bin/bash
 
-prog=('Bash' 'C' 'Go' 'Js' 'Perl' 'PHP' 'Python' 'Ruby')
-port=(6656 6657 6658 6659 6666 6667 6668 6669)
+prog=('Bash' 'C' 'Js' 'PHP' 'Python')
+port=(6656 6657 6658 6659 6670)
 
 for index in ${!prog[*]} ; do
     path="`pwd`/${prog[$index]}"

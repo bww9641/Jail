@@ -2,12 +2,13 @@ FROM ubuntu:16.04
 
 MAINTAINER c2w2m2 juchang0308@gmail.com
 
+RUN apt-get clean
 RUN apt-get update
 RUN apt-get install -y xinetd 
 RUN apt-get install -y python2.7
 RUN apt-get install -y curl
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
 ENV TERM=linux
