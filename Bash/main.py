@@ -12,7 +12,8 @@ def sendline(data):
     send(data + '\n')
 
 def recv():
-    data = raw_input(':> ')
+    send('> ')
+    data = raw_input()
     return data
 
 def getRand(table, length):
@@ -22,7 +23,7 @@ def getRand(table, length):
     return res
 
 def filter(data):
-    filtering = []
+    filtering = ['cat', '$', 'sh', '`', '<', '>', 'rm', 'more', 'less', 'echo', 'grep', 'flag', '*', 'vi', 'nc']
     for i in filtering:
         if i in data:
             return 0
