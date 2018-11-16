@@ -62,7 +62,7 @@ if __name__ == '__main__':
    
     code = ''
     while True:
-        cmd = recv()
+        cmd = recv() + '\n'
         if "END" in cmd:
             break
         code += cmd

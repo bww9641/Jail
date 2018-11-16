@@ -56,7 +56,7 @@ def execute(cmd):
 
 if __name__ == '__main__':
     signal.signal(signal.SIGALRM, timeout)
-    signal.alarm(240)
+    signal.alarm(60)
 
     sendline("Plz send C code")
     sendline("If you send \"return 0;\", input will be ended")
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     code = ''
     while True:
-        cmd = recv()
+        cmd = recv() + '\n'
         code += cmd
         if "return 0;" in cmd:
             break
@@ -84,3 +84,4 @@ if __name__ == '__main__':
             sendline("Error")
     else:
         sendline("Filtered")
+ 
