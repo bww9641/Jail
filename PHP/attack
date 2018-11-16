@@ -1,0 +1,10 @@
+service attack
+{
+        disable         = no
+        flags           = REUSE
+        socket_type     = stream
+        protocol        = tcp
+        user            = attack
+        wait            = no
+        server          = /home/attack/main.py
+}
