@@ -6,5 +6,5 @@ service attack
         protocol        = tcp
         user            = attack
         wait            = no
-        server          = /home/attack/main
+        server          = /home/attack/main     
 }

@@ -12,7 +12,8 @@ def sendline(data):
     send(data + '\n')
 
 def recv():
-    data = raw_input('> ')
+    send('> ')
+    data = raw_input()
     return data
 
 def getRand(table, length):
