@@ -5,6 +5,7 @@ MAINTAINER c2w2m2 juchang0308@gmail.com
 RUN apt-get clean
 RUN apt-get update
 RUN apt-get install -y xinetd
+RUn apt-get install -y python2.7
 
 ENV TERM=linux
 
